@@ -90,11 +90,12 @@ end
 # BLOOD FLOW FUNCTION (SIMPLE SINE WAVE) #
 ##########################################
 
-A = 100     # mL/s
-B = 60/72;
+A = 314     # mL/s
+B = 1;      # s
 
 function flow(t)
-    return A*sin(2*π*t/B)+A
+    bloodflow =  A*sin(2*π*t/B)
+    return max(0,bloodflow)
 end
 
 #################################################################
