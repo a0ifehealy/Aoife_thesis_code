@@ -363,22 +363,22 @@ sol = solve(prob, RK4(), reltol=1e-9, abstol=1e-12, saveat=19:0.01:20);
 #########################
 
 function add_to_graphs_blue(graph_list)
-    plot!(graph_list[1], (sol.t.-19.0), sol[circ_sys.RV.p], linewidth=2, linestyle=:dash, linecolor=:blue)
-    plot!(graph_list[2], (sol.t.-19.0), sol[circ_sys.RA.p], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[3], (sol.t.-19.0), sol[circ_sys.LV.p], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[4], (sol.t.-19.0), sol[circ_sys.LA.p], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[5], sol[circ_sys.RV.V], sol[circ_sys.RV.p], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[6], sol[circ_sys.RA.V], sol[circ_sys.RA.p], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[7], sol[circ_sys.LV.V], sol[circ_sys.LV.p], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[8], sol[circ_sys.LA.V], sol[circ_sys.LA.p], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[9], (sol.t.-19.0), sol[circ_sys.SAS.C.p], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[10], (sol.t.-19.0), sol[circ_sys.PAS.C.p], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[11], (sol.t.-19.0), sol[circ_sys.RV.V], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[10], (sol.t.-19.0), sol[circ_sys.RA.V], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[13], (sol.t.-19.0), sol[circ_sys.LV.V], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[14], (sol.t.-19.0), sol[circ_sys.LA.V], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[15], (sol.t.-19.0), sol[circ_sys.SAS.C.V], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[16], (sol.t.-19.0), sol[circ_sys.PAS.C.V], linewidth=2, linestyle=:dash, linecolor=:red)
+    plot!(graph_list[1], (sol.t.-19.0), sol[circ_sys.RV.p], linewidth=2, linecolor=:blue)
+    plot!(graph_list[2], (sol.t.-19.0), sol[circ_sys.RA.p], linewidth=2, linecolor=:blue)
+    plot!(graph_list[3], (sol.t.-19.0), sol[circ_sys.LV.p], linewidth=2, linecolor=:blue)
+    plot!(graph_list[4], (sol.t.-19.0), sol[circ_sys.LA.p], linewidth=2, linecolor=:blue)
+    plot!(graph_list[5], sol[circ_sys.RV.V], sol[circ_sys.RV.p], linewidth=2, linecolor=:blue)
+    plot!(graph_list[6], sol[circ_sys.RA.V], sol[circ_sys.RA.p], linewidth=2, linecolor=:blue)
+    plot!(graph_list[7], sol[circ_sys.LV.V], sol[circ_sys.LV.p], linewidth=2, linecolor=:blue)
+    plot!(graph_list[8], sol[circ_sys.LA.V], sol[circ_sys.LA.p], linewidth=2, linecolor=:blue)
+    plot!(graph_list[9], (sol.t.-19.0), sol[circ_sys.SAS.C.p], linewidth=2, linecolor=:blue)
+    plot!(graph_list[10], (sol.t.-19.0), sol[circ_sys.PAS.C.p], linewidth=2, linecolor=:blue)
+    plot!(graph_list[11], (sol.t.-19.0), sol[circ_sys.RV.V], linewidth=2, linecolor=:blue)
+    plot!(graph_list[12], (sol.t.-19.0), sol[circ_sys.RA.V], linewidth=2, linecolor=:blue)
+    plot!(graph_list[13], (sol.t.-19.0), sol[circ_sys.LV.V], linewidth=2, linecolor=:blue)
+    plot!(graph_list[14], (sol.t.-19.0), sol[circ_sys.LA.V], linewidth=2, linecolor=:blue)
+    plot!(graph_list[15], (sol.t.-19.0), sol[circ_sys.SAS.C.V], linewidth=2, linecolor=:blue)
+    plot!(graph_list[16], (sol.t.-19.0), sol[circ_sys.PAS.C.V], linewidth=2, linecolor=:blue)
 end
 
 
@@ -439,7 +439,7 @@ function add_to_graphs_red(graph_list)
     plot!(graph_list[9], (sol.t.-19.0), sol[circ_sys.SAS.C.p], linewidth=2, linestyle=:dash, linecolor=:red)
     plot!(graph_list[10], (sol.t.-19.0), sol[circ_sys.PAS.C.p], linewidth=2, linestyle=:dash, linecolor=:red)
     plot!(graph_list[11], (sol.t.-19.0), sol[circ_sys.RV.V], linewidth=2, linestyle=:dash, linecolor=:red)
-    plot!(graph_list[10], (sol.t.-19.0), sol[circ_sys.RA.V], linewidth=2, linestyle=:dash, linecolor=:red)
+    plot!(graph_list[12], (sol.t.-19.0), sol[circ_sys.RA.V], linewidth=2, linestyle=:dash, linecolor=:red)
     plot!(graph_list[13], (sol.t.-19.0), sol[circ_sys.LV.V], linewidth=2, linestyle=:dash, linecolor=:red)
     plot!(graph_list[14], (sol.t.-19.0), sol[circ_sys.LA.V], linewidth=2, linestyle=:dash, linecolor=:red)
     plot!(graph_list[15], (sol.t.-19.0), sol[circ_sys.SAS.C.V], linewidth=2, linestyle=:dash, linecolor=:red)
@@ -745,3 +745,152 @@ add_to_graphs_red([p_rv_pt_vc_ym, p_ra_pt_vc_ym, p_lv_pt_vc_ym, p_la_pt_vc_ym, p
 
 # Revert to default
 @named SVN = CR(R=Rsvn, C=Csvn);
+
+
+#############################
+# MAKING AND SAVING FIGURES #
+#############################
+
+# Pressure in Left Ventricle
+fig = plot(p_lv_pt_ao_r, p_lv_pt_ao_ym, p_lv_pt_pa_r, 
+        p_lv_pt_pa_ym, p_lv_pt_la_v0, p_lv_pt_ra_v0_ba, 
+        p_lv_pt_lv_emax, p_lv_pt_rv_emax, p_lv_pt_lv_v0,
+        p_lv_pt_ra_v0_bc, p_lv_pt_vc_r, p_lv_pt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/lv_pt.pdf")
+
+# Pressure in Right Ventricle
+fig = plot(p_rv_pt_ao_r, p_rv_pt_ao_ym, p_rv_pt_pa_r, 
+        p_rv_pt_pa_ym, p_rv_pt_la_v0, p_rv_pt_ra_v0_ba, 
+        p_rv_pt_lv_emax, p_rv_pt_rv_emax, p_rv_pt_lv_v0,
+        p_rv_pt_ra_v0_bc, p_rv_pt_vc_r, p_rv_pt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/rv_pt.pdf")
+
+# Pressure in Left Atrium
+fig = plot(p_la_pt_ao_r, p_la_pt_ao_ym, p_la_pt_pa_r, 
+        p_la_pt_pa_ym, p_la_pt_la_v0, p_la_pt_ra_v0_ba, 
+        p_la_pt_lv_emax, p_la_pt_rv_emax, p_la_pt_lv_v0,
+        p_la_pt_ra_v0_bc, p_la_pt_vc_r, p_la_pt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/la_pt.pdf")
+
+# Pressure in right Atrium
+fig = plot(p_ra_pt_ao_r, p_ra_pt_ao_ym, p_ra_pt_pa_r, 
+        p_ra_pt_pa_ym, p_ra_pt_la_v0, p_ra_pt_ra_v0_ba, 
+        p_ra_pt_lv_emax, p_ra_pt_rv_emax, p_ra_pt_lv_v0,
+        p_ra_pt_ra_v0_bc, p_ra_pt_vc_r, p_ra_pt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/ra_pt.pdf")
+
+# Left Ventricle PV loop
+fig = plot(p_lv_pv_ao_r, p_lv_pv_ao_ym, p_lv_pv_pa_r, 
+        p_lv_pv_pa_ym, p_lv_pv_la_v0, p_lv_pv_ra_v0_ba, 
+        p_lv_pv_lv_emax, p_lv_pv_rv_emax, p_lv_pv_lv_v0,
+        p_lv_pv_ra_v0_bc, p_lv_pv_vc_r, p_lv_pv_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/lv_pv.pdf")
+
+# Right Ventricle PV loop
+fig = plot(p_rv_pv_ao_r, p_rv_pv_ao_ym, p_rv_pv_pa_r, 
+        p_rv_pv_pa_ym, p_rv_pv_la_v0, p_rv_pv_ra_v0_ba, 
+        p_rv_pv_lv_emax, p_rv_pv_rv_emax, p_rv_pv_lv_v0,
+        p_rv_pv_ra_v0_bc, p_rv_pv_vc_r, p_rv_pv_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/rv_pv.pdf")
+
+# Left Atrium PV loop
+fig = plot(p_la_pv_ao_r, p_la_pv_ao_ym, p_la_pv_pa_r, 
+        p_la_pv_pa_ym, p_la_pv_la_v0, p_la_pv_ra_v0_ba, 
+        p_la_pv_lv_emax, p_la_pv_rv_emax, p_la_pv_lv_v0,
+        p_la_pv_ra_v0_ba, p_la_pv_vc_r, p_la_pv_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/la_pv.pdf")
+
+# Right Atrium PV loop
+fig = plot(p_ra_pv_ao_r, p_ra_pv_ao_ym, p_ra_pv_pa_r, 
+        p_ra_pv_pa_ym, p_ra_pv_la_v0, p_ra_pv_ra_v0_ba, 
+        p_ra_pv_lv_emax, p_ra_pv_rv_emax, p_ra_pv_lv_v0,
+        p_ra_pv_ra_v0_bc, p_ra_pv_vc_r, p_ra_pv_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/ra_pv.pdf")
+
+# Pressure in Aortic sinus
+fig = plot(p_ao_pt_ao_r, p_ao_pt_ao_ym, p_ao_pt_pa_r, 
+        p_ao_pt_pa_ym, p_ao_pt_la_v0, p_ao_pt_ra_v0_ba, 
+        p_ao_pt_lv_emax, p_ao_pt_rv_emax, p_ao_pt_lv_v0,
+        p_ao_pt_ra_v0_bc, p_ao_pt_vc_r, p_ao_pt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/ao_pt.pdf")
+
+# Pressure in Pulmonary Sinus
+fig = plot(p_pa_pt_ao_r, p_ao_pt_ao_ym, p_pa_pt_pa_r, 
+        p_pa_pt_pa_ym, p_pa_pt_la_v0, p_pa_pt_ra_v0_ba, 
+        p_pa_pt_lv_emax, p_pa_pt_rv_emax, p_pa_pt_lv_v0,
+        p_pa_pt_ra_v0_bc, p_pa_pt_vc_r, p_pa_pt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/pa_pt.pdf")
+
+# Volume in Left Ventricle
+fig = plot(p_lv_vt_ao_r, p_lv_vt_ao_ym, p_lv_vt_pa_r, 
+        p_lv_vt_pa_ym, p_lv_vt_la_v0, p_lv_vt_ra_v0_ba, 
+        p_lv_vt_lv_emax, p_lv_vt_rv_emax, p_lv_vt_lv_v0,
+        p_lv_vt_ra_v0_bc, p_lv_vt_vc_r, p_lv_vt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/lv_vt.pdf")
+
+# Volume in Right Ventricle
+fig = plot(p_rv_vt_ao_r, p_rv_vt_ao_ym, p_rv_vt_pa_r, 
+        p_rv_vt_pa_ym, p_rv_vt_la_v0, p_rv_vt_ra_v0_ba, 
+        p_rv_vt_lv_emax, p_rv_vt_rv_emax, p_rv_vt_lv_v0,
+        p_rv_vt_ra_v0_bc, p_rv_vt_vc_r, p_rv_vt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/rv_vt.pdf")
+
+# Volume in Left Atrium
+fig = plot(p_la_vt_ao_r, p_la_vt_ao_ym, p_la_vt_pa_r, 
+        p_la_vt_pa_ym, p_la_vt_la_v0, p_la_vt_ra_v0_ba, 
+        p_la_vt_lv_emax, p_la_vt_rv_emax, p_la_vt_lv_v0,
+        p_la_vt_ra_v0_bc, p_la_vt_vc_r, p_la_vt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/la_vt.pdf")
+
+# Volume in Right Atrium
+fig = plot(p_ra_vt_ao_r, p_ra_vt_ao_ym, p_ra_vt_pa_r, 
+        p_ra_vt_pa_ym, p_ra_vt_la_v0, p_ra_vt_ra_v0_ba, 
+        p_ra_vt_lv_emax, p_ra_vt_rv_emax, p_ra_vt_lv_v0,
+        p_ra_vt_ra_v0_bc, p_ra_vt_vc_r, p_ra_vt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/ra_vt.pdf")
+
+# Volume in Aortic Sinus
+fig = plot(p_ao_vt_ao_r, p_ao_vt_ao_ym, p_ao_vt_pa_r, 
+        p_ao_vt_pa_ym, p_ao_vt_la_v0, p_ao_vt_ra_v0_ba, 
+        p_ao_vt_lv_emax, p_ao_vt_rv_emax, p_ao_vt_lv_v0,
+        p_ao_vt_ra_v0_bc, p_ao_vt_vc_r, p_ao_vt_vc_ym, 
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/ao_vt.pdf")
+
+# Volume in Pulmonary Sinus
+fig = plot(p_pa_vt_ao_r, p_pa_vt_ao_ym, p_pa_vt_pa_r, 
+        p_pa_vt_pa_ym, p_pa_vt_la_v0, p_pa_vt_ra_v0_ba, 
+        p_pa_vt_lv_emax, p_pa_vt_rv_emax, p_pa_vt_lv_v0,
+        p_pa_vt_ra_v0_bc, p_pa_vt_vc_r, p_pa_vt_vc_ym,
+        layout=(4,3), margin=10Plots.mm)
+plot!(size=(1200,1200))
+savefig(fig, "plots/pa_vt.pdf")
