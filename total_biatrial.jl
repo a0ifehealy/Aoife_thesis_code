@@ -59,10 +59,10 @@ p_pa_pt = plot(xlabel="t (s)", ylabel="Pressure (mmHg)",title = "(j) Pulmonary A
 
 # DEFINE INDIVIDUAL COMPONENTS
 # Heart chambers
-@named LV = HeartChamber(V_0=v0_lv, p_0=p0_lv, E_min=Emin_lv, E_max=Emax_lv, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0)
-@named LA = HeartChamber(V_0=v0_la, p_0=p0_la, E_min=Emin_la, E_max=Emax_la, T=T, T_es=Tpww_la / 2, T_ep=Tpww_la, Eshift=Tpwb_la)
-@named RV = HeartChamber(V_0=v0_rv, p_0=p0_rv, E_min=Emin_rv, E_max=Emax_rv, T=T, T_es=Tes_rv, T_ep=Ted_rv, Eshift=0.0)
-@named RA = HeartChamber(V_0=v0_ra, p_0=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra)
+@named LV = HeartChamber(V₀=v0_lv, p₀=p0_lv, E_min=Emin_lv, E_max=Emax_lv, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0)
+@named LA = HeartChamber(V₀=v0_la, p₀=p0_la, E_min=Emin_la, E_max=Emax_la, T=T, T_es=Tpww_la / 2, T_ep=Tpww_la, Eshift=Tpwb_la)
+@named RV = HeartChamber(V₀=v0_rv, p₀=p0_rv, E_min=Emin_rv, E_max=Emax_rv, T=T, T_es=Tes_rv, T_ep=Ted_rv, Eshift=0.0)
+@named RA = HeartChamber(V₀=v0_ra, p₀=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra)
 
 # Valves
 @named AV = HeartValve(CQ=CQ_AV)
@@ -161,10 +161,10 @@ plot!(p_pa_pt, (sol.t.-19.0), sol[circ_sys.PAS.C.p], linewidth=2, linecolor=:blu
 
 # DEFINE INDIVIDUAL COMPONENTS
 # Heart chambers
-@named LV = HeartChamber(V_0=v0_lv_ba, p_0=p0_lv_ba, E_min=Emin_lv_ba, E_max=Emax_lv_ba, T=T_ba, T_es=Tes_lv_ba, T_ep=Ted_lv_ba, Eshift=0.0)
-@named LA = HeartChamber(V_0=v0_la_ba, p_0=p0_la_ba, E_min=Emin_la_ba, E_max=Emax_la_ba, T=T_ba, T_es=Tpww_la_ba / 2, T_ep=Tpww_la_ba, Eshift=Tpwb_la_ba)
-@named RV = HeartChamber(V_0=v0_rv_ba, p_0=p0_rv_ba, E_min=Emin_rv_ba, E_max=Emax_rv_ba, T=T_ba, T_es=Tes_rv_ba, T_ep=Ted_rv_ba, Eshift=0.0)
-@named RA = HeartChamber(V_0=v0_ra_ba, p_0=p0_ra_ba, E_min=Emin_ra_ba, E_max=Emax_ra_ba, T=T_ba, T_es=Tpww_ra_ba / 2, T_ep=Tpww_ra_ba, Eshift=Tpwb_ra_ba)
+@named LV = HeartChamber(V₀=v0_lv_ba, p₀=p0_lv_ba, E_min=Emin_lv_ba, E_max=Emax_lv_ba, T=T_ba, T_es=Tes_lv_ba, T_ep=Ted_lv_ba, Eshift=0.0)
+@named LA = HeartChamber(V₀=v0_la_ba, p₀=p0_la_ba, E_min=Emin_la_ba, E_max=Emax_la_ba, T=T_ba, T_es=Tpww_la_ba / 2, T_ep=Tpww_la_ba, Eshift=Tpwb_la_ba)
+@named RV = HeartChamber(V₀=v0_rv_ba, p₀=p0_rv_ba, E_min=Emin_rv_ba, E_max=Emax_rv_ba, T=T_ba, T_es=Tes_rv_ba, T_ep=Ted_rv_ba, Eshift=0.0)
+@named RA = HeartChamber(V₀=v0_ra_ba, p₀=p0_ra_ba, E_min=Emin_ra_ba, E_max=Emax_ra_ba, T=T_ba, T_es=Tpww_ra_ba / 2, T_ep=Tpww_ra_ba, Eshift=Tpwb_ra_ba)
 
 # Valves
 @named AV = HeartValve(CQ=CQ_AV_ba)
