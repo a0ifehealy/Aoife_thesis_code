@@ -274,10 +274,10 @@ p_pa_vt_vc_ym = plot_setup(plot_title, "t (s)", "Volume (ml)");
 ###########################
 
 # Heart chambers
-@named LV = HeartChamber(V_0=v0_lv, p_0=p0_lv, E_min=Emin_lv, E_max=Emax_lv, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0)
-@named LA = HeartChamber(V_0=v0_la, p_0=p0_la, E_min=Emin_la, E_max=Emax_la, T=T, T_es=Tpww_la / 2, T_ep=Tpww_la, Eshift=Tpwb_la)
-@named RV = HeartChamber(V_0=v0_rv, p_0=p0_rv, E_min=Emin_rv, E_max=Emax_rv, T=T, T_es=Tes_rv, T_ep=Ted_rv, Eshift=0.0)
-@named RA = HeartChamber(V_0=v0_ra, p_0=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra)
+@named LV = HeartChamber(V₀=v0_lv, p₀=p0_lv, E_min=Emin_lv, E_max=Emax_lv, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0)
+@named LA = HeartChamber(V₀=v0_la, p₀=p0_la, E_min=Emin_la, E_max=Emax_la, T=T, T_es=Tpww_la / 2, T_ep=Tpww_la, Eshift=Tpwb_la)
+@named RV = HeartChamber(V₀=v0_rv, p₀=p0_rv, E_min=Emin_rv, E_max=Emax_rv, T=T, T_es=Tes_rv, T_ep=Ted_rv, Eshift=0.0)
+@named RA = HeartChamber(V₀=v0_ra, p₀=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra)
 
 # Valves
 @named AV = HeartValve(CQ=CQ_AV)
@@ -552,7 +552,7 @@ add_to_graphs_red([p_rv_pt_pa_ym, p_ra_pt_pa_ym, p_lv_pt_pa_ym, p_la_pt_pa_ym, p
 ################################
 
 # Change necessary parameters
-@named LA = HeartChamber(V_0=v0_la*0.75, p_0=p0_la, E_min=Emin_la, E_max=Emax_la, T=T, T_es=Tpww_la / 2, T_ep=Tpww_la, Eshift=Tpwb_la);
+@named LA = HeartChamber(V₀=v0_la*0.75, p₀=p0_la, E_min=Emin_la, E_max=Emax_la, T=T, T_es=Tpww_la / 2, T_ep=Tpww_la, Eshift=Tpwb_la);
 
 # Create ODE system
 @named _circ_model = ODESystem(circ_eqs, t)
@@ -569,7 +569,7 @@ add_to_graphs_red([p_rv_pt_la_v0, p_ra_pt_la_v0, p_lv_pt_la_v0, p_la_pt_la_v0, p
                 p_ao_pt_la_v0, p_pa_pt_la_v0, p_rv_vt_la_v0, p_ra_vt_la_v0, p_lv_vt_la_v0, p_la_vt_la_v0, p_ao_vt_la_v0, p_pa_vt_la_v0]);
 
 # Revert to default
-@named LA = HeartChamber(V_0=v0_la, p_0=p0_la, E_min=Emin_la, E_max=Emax_la, T=T, T_es=Tpww_la / 2, T_ep=Tpww_la, Eshift=Tpwb_la);
+@named LA = HeartChamber(V₀=v0_la, p₀=p0_la, E_min=Emin_la, E_max=Emax_la, T=T, T_es=Tpww_la / 2, T_ep=Tpww_la, Eshift=Tpwb_la);
 
 
 ###########################################
@@ -577,7 +577,7 @@ add_to_graphs_red([p_rv_pt_la_v0, p_ra_pt_la_v0, p_lv_pt_la_v0, p_la_pt_la_v0, p
 ###########################################
 
 # Change necessary parameters
-@named RA = HeartChamber(V_0=v0_ra*0.75, p_0=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra);
+@named RA = HeartChamber(V₀=v0_ra*0.75, p₀=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra);
 
 # Create ODE system
 @named _circ_model = ODESystem(circ_eqs, t)
@@ -594,7 +594,7 @@ add_to_graphs_red([p_rv_pt_ra_v0_ba, p_ra_pt_ra_v0_ba, p_lv_pt_ra_v0_ba, p_la_pt
                 p_ao_pt_ra_v0_ba, p_pa_pt_ra_v0_ba, p_rv_vt_ra_v0_ba, p_ra_vt_ra_v0_ba, p_lv_vt_ra_v0_ba, p_la_vt_ra_v0_ba, p_ao_vt_ra_v0_ba, p_pa_vt_ra_v0_ba]);
 
 # Revert to default
-@named RA = HeartChamber(V_0=v0_ra, p_0=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra);
+@named RA = HeartChamber(V₀=v0_ra, p₀=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra);
 
 
 ######################################
@@ -602,7 +602,7 @@ add_to_graphs_red([p_rv_pt_ra_v0_ba, p_ra_pt_ra_v0_ba, p_lv_pt_ra_v0_ba, p_la_pt
 ######################################
 
 # cHANGE NECESSARY PARAMETERS
-@named LV = HeartChamber(V_0=v0_lv, p_0=p0_lv, E_min=Emin_lv, E_max=Emax_lv*1.75, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0);
+@named LV = HeartChamber(V₀=v0_lv, p₀=p0_lv, E_min=Emin_lv, E_max=Emax_lv*1.75, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0);
 
 # Create ODE system
 @named _circ_model = ODESystem(circ_eqs, t)
@@ -619,7 +619,7 @@ add_to_graphs_red([p_rv_pt_lv_emax, p_ra_pt_lv_emax, p_lv_pt_lv_emax, p_la_pt_lv
                 p_ao_pt_lv_emax, p_pa_pt_lv_emax, p_rv_vt_lv_emax, p_ra_vt_lv_emax, p_lv_vt_lv_emax, p_la_vt_lv_emax, p_ao_vt_lv_emax, p_pa_vt_lv_emax]);
 
 #Revert to default
-@named LV = HeartChamber(V_0=v0_lv, p_0=p0_lv, E_min=Emin_lv, E_max=Emax_lv, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0);
+@named LV = HeartChamber(V₀=v0_lv, p₀=p0_lv, E_min=Emin_lv, E_max=Emax_lv, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0);
 
 
 #######################################
@@ -627,7 +627,7 @@ add_to_graphs_red([p_rv_pt_lv_emax, p_ra_pt_lv_emax, p_lv_pt_lv_emax, p_la_pt_lv
 #######################################
 
 # Change necessary parameters
-@named RV = HeartChamber(V_0=v0_rv, p_0=p0_rv, E_min=Emin_rv, E_max=Emax_rv*1.1, T=T, T_es=Tes_rv, T_ep=Ted_rv, Eshift=0.0);
+@named RV = HeartChamber(V₀=v0_rv, p₀=p0_rv, E_min=Emin_rv, E_max=Emax_rv*1.1, T=T, T_es=Tes_rv, T_ep=Ted_rv, Eshift=0.0);
 
 # Create ODE system
 @named _circ_model = ODESystem(circ_eqs, t)
@@ -644,7 +644,7 @@ add_to_graphs_red([p_rv_pt_rv_emax, p_ra_pt_rv_emax, p_lv_pt_rv_emax, p_la_pt_rv
                 p_ao_pt_rv_emax, p_pa_pt_rv_emax, p_rv_vt_rv_emax, p_ra_vt_rv_emax, p_lv_vt_rv_emax, p_la_vt_rv_emax, p_ao_vt_rv_emax, p_pa_vt_rv_emax]);
 
 # Revert to default
-@named RV = HeartChamber(V_0=v0_rv, p_0=p0_rv, E_min=Emin_rv, E_max=Emax_rv, T=T, T_es=Tes_rv, T_ep=Ted_rv, Eshift=0.0);
+@named RV = HeartChamber(V₀=v0_rv, p₀=p0_rv, E_min=Emin_rv, E_max=Emax_rv, T=T, T_es=Tes_rv, T_ep=Ted_rv, Eshift=0.0);
 
 
 ###################################
@@ -652,7 +652,7 @@ add_to_graphs_red([p_rv_pt_rv_emax, p_ra_pt_rv_emax, p_lv_pt_rv_emax, p_la_pt_rv
 ###################################
 
 # Change necessary parameters
-@named LV = HeartChamber(V_0=v0_lv*1.5, p_0=p0_lv, E_min=Emin_lv, E_max=Emax_lv, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0);
+@named LV = HeartChamber(V₀=v0_lv*1.5, p₀=p0_lv, E_min=Emin_lv, E_max=Emax_lv, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0);
 
 # Create ODE system
 @named _circ_model = ODESystem(circ_eqs, t)
@@ -669,7 +669,7 @@ add_to_graphs_red([p_rv_pt_lv_v0, p_ra_pt_lv_v0, p_lv_pt_lv_v0, p_la_pt_lv_v0, p
                 p_ao_pt_lv_v0, p_pa_pt_lv_v0, p_rv_vt_lv_v0, p_ra_vt_lv_v0, p_lv_vt_lv_v0, p_la_vt_lv_v0, p_ao_vt_lv_v0, p_pa_vt_lv_v0]);
 
 # Revert to default
-@named LV = HeartChamber(V_0=v0_lv, p_0=p0_lv, E_min=Emin_lv, E_max=Emax_lv, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0);
+@named LV = HeartChamber(V₀=v0_lv, p₀=p0_lv, E_min=Emin_lv, E_max=Emax_lv, T=T, T_es=Tes_lv, T_ep=Ted_lv, Eshift=0.0);
 
 
 ###########################################
@@ -677,7 +677,7 @@ add_to_graphs_red([p_rv_pt_lv_v0, p_ra_pt_lv_v0, p_lv_pt_lv_v0, p_la_pt_lv_v0, p
 ###########################################
 
 # Change necessary parameters
-@named RA = HeartChamber(V_0=v0_ra*0.5, p_0=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra);
+@named RA = HeartChamber(V₀=v0_ra*0.5, p₀=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra);
 
 # Create ODE system
 @named _circ_model = ODESystem(circ_eqs, t)
@@ -694,7 +694,7 @@ add_to_graphs_red([p_rv_pt_ra_v0_bc, p_ra_pt_ra_v0_bc, p_lv_pt_ra_v0_bc, p_la_pt
                 p_ao_pt_ra_v0_bc, p_pa_pt_ra_v0_bc, p_rv_vt_ra_v0_bc, p_ra_vt_ra_v0_bc, p_lv_vt_ra_v0_bc, p_la_vt_ra_v0_bc, p_ao_vt_ra_v0_bc, p_pa_vt_ra_v0_bc]);
 
 # Revert to default
-@named RA = HeartChamber(V_0=v0_ra, p_0=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra);
+@named RA = HeartChamber(V₀=v0_ra, p₀=p0_ra, E_min=Emin_ra, E_max=Emax_ra, T=T, T_es=Tpww_ra / 2, T_ep=Tpww_ra, Eshift=Tpwb_ra);
 
 
 ##############################
