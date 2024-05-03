@@ -1,3 +1,8 @@
+This repository contains code created for my thesis project entitled "Developing Lumped-Parameter Models for Porcine-to-Human Cardiac Xenotransplantation"
+
+
+
+
 Made for interim report:
 circulatory_system_components.jl		Contains funtions for the individual components of the circulatory system that can be connected to form the entire system
 										Updated with docstrings for final report.
