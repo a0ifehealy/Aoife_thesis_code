@@ -39,15 +39,15 @@ Defines a generic 'electrical' element by applying Kirchhoff's circuit
 laws.
 
 Parameters calculated:
-del_p      Pressure drop across element (mmHg)
+Δp      Pressure drop across element (mmHg)
 q       Blood flow through element (ml/s)
 """
 @component function OnePort(; name)
     @named in = Pin()
     @named out = Pin()
-    sts = @variables del_p(t) = 0.0 q(t) = 0.0
+    sts = @variables Δp(t) = 0.0 q(t) = 0.0
     eqs = [
-            del_p ~ out.p - in.p
+            Δp ~ out.p - in.p
             0 ~ in.q + out.q
             q ~ in.q
     ]
@@ -64,15 +64,15 @@ Arguments:
 R       Resistance of blood vessel (mmHg*s/ml)
 
 Parameters calculated:
-del_p      Pressure drop across resistance element (mmHg)
+Δp      Pressure drop across resistance element (mmHg)
 q       Blood flow through resistance element (ml/s)
 """
 @component function Resistor(; name, R=1.0)
     @named oneport = OnePort()
-    @unpack del_p, q = oneport
+    @unpack Δp, q = oneport
     ps = @parameters R = R
     eqs = [
-            del_p ~ -q * R
+            Δp ~ -q * R
     ]
     extend(ODESystem(eqs, t, [], ps; name=name), oneport)
 end
@@ -88,53 +88,53 @@ Arguments:
 C       Compliance of blood vessel (ml/mmHg)
 
 Parameters calculated:
-del_p      Pressure drop across capacitance element (mmHg)
+Δp      Pressure drop across capacitance element (mmHg)
 q       Blood flow through capacitance element (ml/s)
 """
 @component function Capacitor(; name, C=1.0)
     @named oneport = OnePort()
-    @unpack del_p, q = oneport
+    @unpack Δp, q = oneport
     ps = @parameters C = C
     eqs = [
-            D(del_p) ~ -q / C
+            D(Δp) ~ -q / C
     ]
     extend(ODESystem(eqs, t, [], ps; name=name), oneport)
 end
 
 # Compliance
 """
-Compliance(; name, V_0=0.0, C=1.0, p_0=0.0)
+Compliance(; name, V₀=0.0, C=1.0, p₀=0.0)
 
 Defines a compliant vessel.
 
 Arguments:
-V_0      Stress-free (zero pressure) volume (ml)
+V₀      Stress-free (zero pressure) volume (ml)
 C       Compliance of blood vessel (ml/mmHg)
-p_0      Offset pressure value (mmHg)
+p₀      Offset pressure value (mmHg)
 
 Parameters calculated:
 p       Pressure in compliance vessel (mmHg)
 V       Volume in compliance vessel (ml)
 """
-@component function Compliance(; name, V_0=0.0, C=1.0, p_0=0.0)
+@component function Compliance(; name, V₀=0.0, C=1.0, p₀=0.0)
     @named in = Pin()
     @named out = Pin()
 
     sts = @variables begin
-            V(t) = V_0
+            V(t) = V₀
             p(t) = 0.0
     end
 
     ps = @parameters begin
-            V_0 = V_0
+            V₀ = V₀
             C = C
-            p_rel = p_0
+            p_rel = p₀
     end
 
     eqs = [
             0 ~ in.p - out.p
             p ~ in.p
-            p ~ ((V - V_0) / C) + p_rel
+            p ~ ((V - V₀) / C) + p_rel
             D(V) ~ in.q + out.q
     ]
 
@@ -152,16 +152,16 @@ Arguments:
 L       Inductance of blood vessel (mmHg*s^2/ml)
 
 Parameters calculated:
-del_p      Pressure drop across capacitance element (mmHg)
+Δp      Pressure drop across capacitance element (mmHg)
 q       Blood flow through capacitance element (ml/s)
 """
 @component function Inductance(; name, L=1.0)
     @named oneport = OnePort()
-    @unpack del_p, q = oneport
+    @unpack Δp, q = oneport
     ps = @parameters L = L
     D = Differential(t)
     eqs = [
-            D(q) ~ -del_p / L
+            D(q) ~ -Δp / L
     ]
     extend(ODESystem(eqs, t, [], ps; name=name), oneport)
 end
@@ -189,13 +189,13 @@ q       Blood flow through source element (ml/s)
 end
 
 """
-HeartChamber(; name, V_0, p_0, E_min, E_max, T, T_es, T_ep, Eshift=0.0)
+HeartChamber(; name, V₀, p₀, E_min, E_max, T, T_es, T_ep, Eshift=0.0)
 
 Defines a chamber of the heart
 
 Arguments:
-V_0      Stress-free (zero pressure) volume (ml)
-p_0      Pressure offset value (mmHg)
+V₀      Stress-free (zero pressure) volume (ml)
+p₀      Pressure offset value (mmHg)
 E_min   Minimum elastance (mmHg/ml)
 E_max   Maximum elastance (mmHg/ml)
 T       Period of cardiac cycle (s)
@@ -208,24 +208,24 @@ p       Pressure in chamber (mmHg)
 V       Volume in chamber (ml)
 """
 # Heart Chamber
-@component function HeartChamber(; name, V_0, p_0, E_min, E_max, T, T_es, 
+@component function HeartChamber(; name, V₀, p₀, E_min, E_max, T, T_es, 
     T_ep, Eshift=0.0)
 
     @named in = Pin()
     @named out = Pin()
     sts = @variables V(t) = 0.0 p(t) = 0.0
-    ps = @parameters (V_0 = V_0, p_0 = p_0, E_min = E_min, E_max = E_max, 
+    ps = @parameters (V₀ = V₀, p₀ = p₀, E_min = E_min, E_max = E_max, 
                     T = T, T_es = T_es, T_ep = T_ep, Eshift = Eshift)
 
     D = Differential(t)
     E = Elastance(t, E_min, E_max, T, T_es, T_ep, Eshift)
 
-    p_rel = p_0
+    p_rel = p₀
 
     eqs = [
             0 ~ in.p - out.p
             p ~ in.p
-            p ~ ((V - V_0) * E) + p_rel
+            p ~ ((V - V₀) * E) + p_rel
             D(V) ~ in.q + out.q
         ]
 
@@ -242,15 +242,15 @@ Arguments:
 CQ      Flow coefficient (ml/(s*mmHg^0.5))
 
 Parameters calculated:
-del_p      Pressure drop across capacitance element (mmHg)
+Δp      Pressure drop across capacitance element (mmHg)
 q       Blood flow through capacitance element (ml/s)
 """
 @component function HeartValve(; name, CQ=1.0)
     @named oneport = OnePort()
-    @unpack del_p, q = oneport
+    @unpack Δp, q = oneport
     ps = @parameters CQ = CQ
     eqs = [
-            q ~ (del_p < 0) * CQ * sqrt(abs(del_p))
+            q ~ (Δp < 0) * CQ * sqrt(abs(Δp))
     ]
     extend(ODESystem(eqs, t, [], ps; name=name), oneport)
 end
@@ -267,14 +267,14 @@ R       Blood vessel resistance (mmHg*s/ml)
 L       Blood vessel inductance (mmHg*s^2/ml)
 
 Parameters calculated:
-del_p      Pressure drop across subsystem (mmHg)
+Δp      Pressure drop across subsystem (mmHg)
 q       Blood flow through subsystem element (ml/s)
 """
 @component function CRL(; name, C=1.0, R=1.0, L=1.0)
     @named in = Pin()
     @named out = Pin()
 
-    sts = @variables del_p(t) = 0.0 q(t) = 0.0
+    sts = @variables Δp(t) = 0.0 q(t) = 0.0
     ps = []
 
     @named C = Compliance(C=C)
@@ -282,7 +282,7 @@ q       Blood flow through subsystem element (ml/s)
     @named L = Inductance(L=L)
 
     eqs = [
-            del_p ~ out.p - in.p
+            Δp ~ out.p - in.p
             q ~ in.q
             connect(in, C.in)
             connect(C.out, R.in)
@@ -304,21 +304,21 @@ C       Blood vessel compliace (ml/mmHg)
 R       Blood vessel resistance (mmHg*s/ml)
 
 Parameters calculated:
-del_p      Pressure drop across subsystem (mmHg)
+Δp      Pressure drop across subsystem (mmHg)
 q       Blood flow through subsystem element (ml/s)
 """
 @component function CR(; name, R=1.0, C=1.0)
     @named in = Pin()
     @named out = Pin()
 
-    sts = @variables del_p(t) = 0.0 q(t) = 0.0
+    sts = @variables Δp(t) = 0.0 q(t) = 0.0
     ps = []
 
     @named R = Resistor(R=R)
     @named C = Compliance(C=C)
 
     eqs = [
-            del_p ~ out.p - in.p
+            Δp ~ out.p - in.p
             q ~ in.q
             connect(in, C.in)
             connect(C.out, R.in)
